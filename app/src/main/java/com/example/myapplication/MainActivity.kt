@@ -16,11 +16,13 @@ fun main() {
         "CatDiscount",
         "The best Cat Discount",
         "hey",
-        DiscountType.RangeAmount(0, 5)
+        DiscountType.FixAmount(3)
     )
     println(discount)
-    discount.discountType = DiscountType.FixAmount(5)
+    println(discount.discountType.calculate(5))
+    discount.discountType = DiscountType.RangeAmount(5, 1)
     println(discount)
+    println(discount.discountType.calculate(3))
 
     when (discount.discountType) {
         is DiscountType.FixAmount -> "FixAmountDataClass"
