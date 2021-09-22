@@ -11,6 +11,6 @@ class MainActivity : AppCompatActivity() {
 }
 
 fun main() {
-    val discount = Discount ()
+    val discount = DiscountData(3, "CatDiscount", "The best Cat Discount", "hey")
     println(discount)
 }
