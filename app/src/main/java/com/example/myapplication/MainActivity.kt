@@ -11,6 +11,20 @@ class MainActivity : AppCompatActivity() {
 }
 
 fun main() {
-    val discount = DiscountData(3, "CatDiscount", "The best Cat Discount", "hey")
+    var discount = DiscountData(
+        3,
+        "CatDiscount",
+        "The best Cat Discount",
+        "hey",
+        DiscountType.RangeAmount(0, 5)
+    )
     println(discount)
+    discount.discountType = DiscountType.FixAmount(5)
+    println(discount)
+
+    when (discount.discountType) {
+        is DiscountType.FixAmount -> "FixAmountDataClass"
+        is DiscountType.RangeAmount -> "RangeAmountDataClass"
+        DiscountType.noAmount -> "NoAmountObject"
+    }
 }

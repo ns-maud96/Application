@@ -4,7 +4,8 @@ data class DiscountData(
     var amount: Int,
     var title: String,
     var description: String,
-    var url: String
+    var url: String? = null,
+    var discountType: DiscountType
 ) {
     fun getMyTitle() = title.uppercase()
     fun setMyDescription(value: String) {
@@ -17,13 +18,17 @@ data class DiscountData(
 
     fun setMyAmount(value: Int) {
         amount = try {
-            if (value != null) {
-                1 / value
-            } else {
-                0
-            }
+            1 / value
         } catch (exception: ArithmeticException) {
             0
         }
+    }
+
+    fun getSafeUrl(): String {
+        return url ?: "google.com"
+    }
+
+    fun tmp(url: String?): String {
+        return url ?: "google.com"
     }
 }
